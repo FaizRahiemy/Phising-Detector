@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args) {
-        String domain = "http://faiz.rahiemy.id/coretan";
+        String domain = "http://facebook.com";
         String chkDomain = "";
         if (domain.contains("https")){
             chkDomain = domain.replace("https://", "");
@@ -32,7 +32,7 @@ public class Test {
             userAgent.visit(domain);
 
             Element div = userAgent.doc;
-            List<String> lis = div.findAttributeValues("<a href>");
+            List<String> lis = div.findAttributeValues("<img src='.*'>");
             for (int i = 0; i < lis.size(); i++) {
                 System.out.print(lis.get(i));
                 if (lis.get(i).contains(chkDomain)){

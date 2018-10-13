@@ -170,12 +170,13 @@ public class URL {
     
     public Element getScrapCertificate(){
         
-        String chkDomain = "";
-        if (url.contains("https")){
-            chkDomain = url.replace("https://", "");
-        }else if (url.contains("http")){
-            chkDomain = url.replace("http://", "");
+        String chkDomain = url;
+        if (chkDomain.contains("https")){
+            chkDomain = chkDomain.replace("https://", "");
+        }else if (chkDomain.contains("http")){
+            chkDomain = chkDomain.replace("http://", "");
         }
+        
         chkDomain = chkDomain.split("/")[0];
         
         Element scrap = null;
@@ -261,9 +262,15 @@ public class URL {
     
     public Element getSite(){
         Element scrap = null;
+        
+        String chkDomain = url;
+        if (!chkDomain.split("/")[0].contains("http")){
+            chkDomain = "http://" + chkDomain;
+        }
+        
         try{
             UserAgent userAgent = new UserAgent(); 
-            userAgent.visit(url);
+            userAgent.visit(chkDomain);
 
             Element div = userAgent.doc;
             scrap = div;
@@ -277,11 +284,11 @@ public class URL {
     public double getRequestUrl(Element div){
         double percent = 0;
         
-        String chkDomain = "";
-        if (url.contains("https")){
-            chkDomain = url.replace("https://", "");
-        }else if (url.contains("http")){
-            chkDomain = url.replace("http://", "");
+        String chkDomain = url;
+        if (chkDomain.contains("https")){
+            chkDomain = chkDomain.replace("https://", "");
+        }else if (chkDomain.contains("http")){
+            chkDomain = chkDomain.replace("http://", "");
         }
         chkDomain = chkDomain.split("/")[0];
         
@@ -315,11 +322,11 @@ public class URL {
     public double getAnchor(Element div){
         double percent = 0;
         
-        String chkDomain = "";
-        if (url.contains("https")){
-            chkDomain = url.replace("https://", "");
-        }else if (url.contains("http")){
-            chkDomain = url.replace("http://", "");
+        String chkDomain = url;
+        if (chkDomain.contains("https")){
+            chkDomain = chkDomain.replace("https://", "");
+        }else if (chkDomain.contains("http")){
+            chkDomain = chkDomain.replace("http://", "");
         }
         chkDomain = chkDomain.split("/")[0];
         

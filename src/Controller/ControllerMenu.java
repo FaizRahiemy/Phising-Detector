@@ -74,7 +74,9 @@ public class ControllerMenu extends MouseAdapter implements ActionListener, KeyL
                     }
                     isi = isi + "URL Length: " + url.getUrl().length() + " \n";
                     isi = isi + "Dot Count: " + url.countDot() + " \n";
-                    isi = isi + "Request Url Percentage: " + url.getRequestUrl(url.getSite()) + "% \n";
+                    DecimalFormat numberFormat = new DecimalFormat("#.00");
+                    isi = isi + "Request Url Percentage: " + numberFormat.format(url.getRequestUrl(url.getSite())) + "% \n";
+                    isi = isi + "Url Anchor Percentage: " + numberFormat.format(url.getAnchor(url.getSite())) + "% \n";
                     isi = isi + "Point Website Rank: " + url.getPointRank(url.getRank()) + " \n";
                     point = point + url.getPointRank(url.getRank());
                     isi = isi + "Point Certificate Issuer: " + url.getPointCertificate(url.getScrapCertificate()) + " \n";
@@ -87,6 +89,8 @@ public class ControllerMenu extends MouseAdapter implements ActionListener, KeyL
                     point = point + url.getPointDot();
                     isi = isi + "Point Request Url: " + url.getPointRequestUrl(url.getRequestUrl(url.getSite()))+ " \n";
                     point = point + url.getPointRequestUrl(url.getRequestUrl(url.getSite()));
+                    isi = isi + "Point Url Anchor: " + url.getPointAnchor(url.getAnchor(url.getSite()))+ " \n";
+                    point = point + url.getPointAnchor(url.getAnchor(url.getSite()));
                     isi = isi + "Point IP : " + url.validIP()+ " \n";
                     point = point + url.validIP();
                     if (response.body().getWhoisRecord().getRegistryData().getRawText().charAt(1) != ' '){

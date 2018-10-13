@@ -77,10 +77,11 @@ public class ControllerBulk extends MouseAdapter implements ActionListener, KeyL
                     try{
                         point = point + url.getPointRank(url.getRank());
                         point = point + url.getPointCertificate(url.getScrapCertificate());
+                        point = point + url.getPointRequestUrl(url.getRequestUrl(url.getSite()));
+                        point = point + url.getPointAnchor(url.getAnchor(url.getSite()));
                         point = point + url.getPointUrlLength();
                         point = point + url.getPointSuffix();
                         point = point + url.getPointDot();
-                        point = point + url.getPointAt();
                         point = point + url.validIP();
                         if (response.body().getWhoisRecord().getRegistryData().getRawText().charAt(1) != ' '){
                             point = point + response.body().getWhoisRecord().getPoint();
