@@ -23,7 +23,7 @@ public class Fuzzy {
         }else if (total < 0.75){
             result = "Suspicious";
         }else{
-            result = "Phisy";
+            result = "Phishy";
         }
         
         return result;
