@@ -77,7 +77,7 @@ public class ControllerMenu extends MouseAdapter implements ActionListener, KeyL
                     }
                     isi = isi + "URL Length: " + url.getUrl().length() + " \n";
                     isi = isi + "Dot Count: " + url.countDot() + " \n";
-                    DecimalFormat numberFormat = new DecimalFormat("#.00");
+                    DecimalFormat numberFormat = new DecimalFormat("#0.00");
                     isi = isi + "Request Url Percentage: " + numberFormat.format(url.getRequestUrl(url.getSite())) + "% \n";
                     isi = isi + "Url Anchor Percentage: " + numberFormat.format(url.getAnchor(url.getSite())) + "% \n";
                     isi = isi + "Point Website Rank: " + url.getPointRank(url.getRank()) + " \n";
