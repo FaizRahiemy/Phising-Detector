@@ -99,6 +99,9 @@ public class ControllerMenu extends MouseAdapter implements ActionListener, KeyL
                     if (response.body().getWhoisRecord().getRegistryData().getRawText().charAt(1) != ' '){
                         isi = isi + "Point Domain Age : " + response.body().getWhoisRecord().getPoint() + " \n";
                         point = point + response.body().getWhoisRecord().getPoint();
+                    }else{
+                        isi = isi + "Point Domain Age : " + 0.2 + " \n";
+                        point = point + 0.2;
                     }
                     DecimalFormat df = new DecimalFormat("#.##");
                     isi = isi + " \nTotal Point : " + df.format(point) + "";

@@ -205,7 +205,7 @@ public class URL {
                 issuer = issuer + "\nChain Certificate: " + lic.getTextContent().replace("Issuer: ","");
             }
         } catch (NotFound ex) {
-            issuer = "No Certificate";
+            issuer = "No Certificate\n";
         }
         
         return issuer;
