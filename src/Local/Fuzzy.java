@@ -18,9 +18,9 @@ public class Fuzzy {
             result = "TrustWorthy";
         }else if (total < 0.3){
             result = "Fairly Legitimate";
-        }else if (total < 0.6){
+        }else if (total < 0.5){
             result = "Unsolved";
-        }else if (total < 0.8){
+        }else if (total < 0.75){
             result = "Suspicious";
         }else{
             result = "Phisy";
