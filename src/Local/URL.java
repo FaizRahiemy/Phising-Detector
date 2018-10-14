@@ -300,7 +300,9 @@ public class URL {
             }
         }
         
-        percent = (((double)lis.size()-asli)/lis.size())*100;
+        if (lis.size() != 0){
+            percent = (((double)lis.size()-asli)/lis.size())*100;
+        }
         
         return percent;
     }
@@ -338,7 +340,9 @@ public class URL {
             }
         }
         
-        percent = (((double)lis.size()-asli)/lis.size())*100;
+        if (lis.size() != 0){
+            percent = (((double)lis.size()-asli)/lis.size())*100;
+        }
         
         return percent;
     }

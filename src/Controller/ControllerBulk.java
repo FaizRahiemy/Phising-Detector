@@ -20,8 +20,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,12 +45,15 @@ public class ControllerBulk extends MouseAdapter implements ActionListener, KeyL
     double point;
     String pointItems;
     String status;
+    ArrayList<BulkItem> list;
+    Thread check = new Thread();
     
     public ControllerBulk(){
         bulkMenu = new BulkMenu();
         api = RetrofitHelper.getClient().create(API.class);
         config = new Config();
         df = new DecimalFormat("#.##");
+        ArrayList<BulkItem> list = new ArrayList<>();
         
         bulkMenu.getTblList().setModel((DefaultTableModel) bulkMenu.getTblList().getModel());
         bulkMenu.getTblList().setPreferredSize(new Dimension(bulkMenu.getTblList().getWidth(),0));
@@ -57,60 +63,86 @@ public class ControllerBulk extends MouseAdapter implements ActionListener, KeyL
         bulkMenu.setVisible(true);
     }
     
-    public void detect(){
+    public void detect() throws IOException{
+        bulkMenu.getButton().setEnabled(false);
+        bulkMenu.getBulk().setEnabled(false);
+        bulkMenu.getField().setEnabled(false);
+        
+        DefaultTableModel tabel = (DefaultTableModel)bulkMenu.getTblList().getModel();
+        for (int j = 0; j < tabel.getRowCount(); j++) {
+            tabel.removeRow(j);
+        }
+        tabel.setRowCount(0);
+        list = new ArrayList<>();
+        bulkMenu.getTblList().setPreferredSize(new Dimension(bulkMenu.getTblList().getWidth(),0));
         isi = "";
         index = 0;
-        ArrayList<BulkItem> list = new ArrayList<>();
-        DefaultTableModel tabel = (DefaultTableModel)bulkMenu.getTblList().getModel();
-        bulkMenu.getTblList().setPreferredSize(new Dimension(bulkMenu.getTblList().getWidth(),0));
         
-        for (String line : bulkMenu.getField().getText().split("\\n")){
-            String domain = line;
-            URL url = new URL(domain);
-            Fuzzy fuzzy = new Fuzzy();
-            point = 0;
-
-            Call<Whois> callEvent = api.whois(config.getApiKey(), domain, config.getOutputFormat());
-            callEvent.enqueue(new Callback<Whois>() {
-                @Override
-                public void onResponse(Call<Whois> callEvent, Response<Whois> response) {
+        check.stop();
+        check = new Thread(sync());
+        check.start();
+    }
+    
+    public Runnable sync(){
+        Runnable r = new Runnable() {
+            public void run() {
+                for (String line : bulkMenu.getField().getText().split("\\n")){
                     try{
-                        point = point + url.getPointRank(url.getRank());
-                        point = point + url.getPointCertificate(url.getScrapCertificate());
-                        point = point + url.getPointRequestUrl(url.getRequestUrl(url.getSite()));
-                        point = point + url.getPointAnchor(url.getAnchor(url.getSite()));
-                        point = point + url.getPointUrlLength();
-                        point = point + url.getPointSuffix();
-                        point = point + url.getPointDot();
-                        point = point + url.validIP();
-                        if (response.body().getWhoisRecord().getRegistryData().getRawText().charAt(1) != ' '){
-                            point = point + response.body().getWhoisRecord().getPoint();
+                        String domain = line;
+                        URL url = new URL(domain);
+                        Fuzzy fuzzy = new Fuzzy();
+                        point = 0;
+                        DefaultTableModel tabel = (DefaultTableModel)bulkMenu.getTblList().getModel();
+                        
+                        Call<Whois> callEvent = api.whois(config.getApiKey(), domain, config.getOutputFormat());
+                        Response<Whois> response = callEvent.execute();
+                        try{
+                            point = point + url.getPointRank(url.getRank());
+                            point = point + url.getPointCertificate(url.getScrapCertificate());
+                            point = point + url.getPointRequestUrl(url.getRequestUrl(url.getSite()));
+                            point = point + url.getPointAnchor(url.getAnchor(url.getSite()));
+                            point = point + url.getPointUrlLength();
+                            point = point + url.getPointSuffix();
+                            point = point + url.getPointDot();
+                            point = point + url.validIP();
+                            if (response.body().getWhoisRecord().getRegistryData().getRawText().charAt(1) != ' '){
+                                point = point + response.body().getWhoisRecord().getPoint();
+                            }
+                            isi = isi + index + ". " + domain + " ";
+                            if (response.body().getWhoisRecord().getRegistryData().getRawText().charAt(1) == ' '){
+                                isi = isi + "Domain not found in the whois data \n";
+                            }
+                            isi = isi + " Point : " + df.format(point) + " ";
+                            isi = isi + " Status : " + fuzzy.doFuzzy(point) + " \n";
+                            pointItems = String.valueOf(df.format(point));
+                            status = fuzzy.doFuzzy(point);
+                            index++;
+                            list.add(new BulkItem(domain,pointItems,status));
+                            tabel.addRow(new Object[]{index, list.get(index-1).getUrl(), list.get(index-1).getPoint(), list.get(index-1).getStatus()});
+                            bulkMenu.getTblList().setPreferredSize(new Dimension(bulkMenu.getTblList().getWidth(),(list.size())*bulkMenu.getTblList().getRowHeight()));
+                            bulkMenu.getTxtStatus().setText("Status: Detecting (" + index + "/" + bulkMenu.getField().getText().split("\\n").length + ")");
+                        }catch(NullPointerException e){
+                            isi = isi + index + ". " + domain + ": Website not found \n";
+                            pointItems = "-";
+                            status = "Website not found";
+                            index++;
+                            list.add(new BulkItem(domain,pointItems,status));
+                            tabel.addRow(new Object[]{index, list.get(index-1).getUrl(), list.get(index-1).getPoint(), list.get(index-1).getStatus()});
+                            bulkMenu.getTblList().setPreferredSize(new Dimension(bulkMenu.getTblList().getWidth(),(list.size())*bulkMenu.getTblList().getRowHeight()));
+                            bulkMenu.getTxtStatus().setText("Status: Detecting (" + index + "/" + bulkMenu.getField().getText().split("\\n").length + ")");
                         }
-                        isi = isi + index + ". " + domain + " ";
-                        if (response.body().getWhoisRecord().getRegistryData().getRawText().charAt(1) == ' '){
-                            isi = isi + "Domain not found in the whois data \n";
-                        }
-                        isi = isi + " Point : " + df.format(point) + " ";
-                        isi = isi + " Status : " + fuzzy.doFuzzy(point) + " \n";
-                        pointItems = String.valueOf(df.format(point));
-                        status = fuzzy.doFuzzy(point);
-                    }catch(NullPointerException e){
-                        isi = isi + index + ". " + domain + ": Website not found \n";
-                        pointItems = "-";
-                        status = "Website not found";
+                        System.out.println(isi);
+                    }catch(IOException ex){
+                        Logger.getLogger(ControllerBulk.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    System.out.println(isi);
-                    index++;
-                    list.add(new BulkItem(domain,pointItems,status));
-                    tabel.addRow(new Object[]{index, list.get(index-1).getUrl(), list.get(index-1).getPoint(), list.get(index-1).getStatus()});
-                    bulkMenu.getTblList().setPreferredSize(new Dimension(bulkMenu.getTblList().getWidth(),(list.size())*bulkMenu.getTblList().getRowHeight()));
-                }
-
-                @Override
-                public void onFailure(Call<Whois> callEvent, Throwable t) {
-                }
-            });
+                };
+                bulkMenu.getTxtStatus().setText("Status: Finisihed Detecting (" + index + "/" + bulkMenu.getField().getText().split("\\n").length + ")");
+                bulkMenu.getButton().setEnabled(true);
+                bulkMenu.getBulk().setEnabled(true);
+                bulkMenu.getField().setEnabled(true);
+            };
         };
+        return r;
     }
     
     @Override
@@ -122,7 +154,12 @@ public class ControllerBulk extends MouseAdapter implements ActionListener, KeyL
     public void actionPerformed(ActionEvent e) {
         Object x = e.getSource();
         if (x.equals(bulkMenu.getButton())){
-            detect();
+            bulkMenu.getTxtStatus().setText("Status: Detecting (0/" + bulkMenu.getField().getText().split("\\n").length + ")");
+            try {
+                detect();
+            } catch (IOException ex) {
+                Logger.getLogger(ControllerBulk.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else if (x.equals(bulkMenu.getBulk())){
             ControllerMenu menu = new ControllerMenu();
             bulkMenu.dispose();

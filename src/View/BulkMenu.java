@@ -6,6 +6,7 @@
 package View;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -31,162 +32,66 @@ public class BulkMenu extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblList = new javax.swing.JTable();
+        txtStatus = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(600, 800));
-        setPreferredSize(new java.awt.Dimension(600, 800));
-        setSize(new java.awt.Dimension(600, 800));
+        setMaximumSize(new java.awt.Dimension(500, 600));
+        setMinimumSize(new java.awt.Dimension(500, 600));
+        setPreferredSize(new java.awt.Dimension(500, 600));
+        setSize(new java.awt.Dimension(500, 600));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("BULK PHISHING DETECTOR");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel1.setMaximumSize(new java.awt.Dimension(600, 75));
-        jLabel1.setMinimumSize(new java.awt.Dimension(600, 75));
-        jLabel1.setPreferredSize(new java.awt.Dimension(600, 75));
+        jLabel1.setMaximumSize(new java.awt.Dimension(500, 50));
+        jLabel1.setMinimumSize(new java.awt.Dimension(500, 50));
+        jLabel1.setPreferredSize(new java.awt.Dimension(500, 50));
         getContentPane().add(jLabel1, java.awt.BorderLayout.NORTH);
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(600, 25));
-        jPanel1.setMinimumSize(new java.awt.Dimension(600, 25));
-        jPanel1.setPreferredSize(new java.awt.Dimension(600, 80));
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        jPanel1.setMaximumSize(new java.awt.Dimension(500, 100));
+        jPanel1.setMinimumSize(new java.awt.Dimension(500, 100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(500, 200));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jPanel3.setMinimumSize(new java.awt.Dimension(61, 25));
-        jPanel3.setPreferredSize(new java.awt.Dimension(91, 25));
-        jPanel3.setLayout(new java.awt.BorderLayout());
-
-        jButton1.setText("Check");
-        jPanel3.add(jButton1, java.awt.BorderLayout.WEST);
-
-        jPanel9.setPreferredSize(new java.awt.Dimension(30, 25));
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 155, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel9, java.awt.BorderLayout.CENTER);
-
-        jPanel1.add(jPanel3, java.awt.BorderLayout.EAST);
-
-        jPanel8.setPreferredSize(new java.awt.Dimension(30, 25));
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 155, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel8, java.awt.BorderLayout.LINE_START);
+        jScrollPane2.setMaximumSize(new java.awt.Dimension(400, 180));
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(400, 180));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(400, 180));
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
+        jTextArea2.setMargin(new java.awt.Insets(5, 5, 5, 5));
         jScrollPane2.setViewportView(jTextArea2);
 
-        jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        jPanel1.add(jScrollPane2, new java.awt.GridBagConstraints());
+
+        jButton1.setText("Check");
+        jButton1.setMaximumSize(new java.awt.Dimension(75, 180));
+        jButton1.setMinimumSize(new java.awt.Dimension(75, 180));
+        jButton1.setPreferredSize(new java.awt.Dimension(75, 180));
+        jPanel1.add(jButton1, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(400, 270));
-        jPanel2.setLayout(new java.awt.BorderLayout());
+        jPanel2.setMaximumSize(new java.awt.Dimension(500, 350));
+        jPanel2.setMinimumSize(new java.awt.Dimension(500, 350));
+        jPanel2.setPreferredSize(new java.awt.Dimension(500, 350));
+        jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jPanel4.setPreferredSize(new java.awt.Dimension(400, 30));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel4, java.awt.BorderLayout.PAGE_START);
-
-        jPanel5.setPreferredSize(new java.awt.Dimension(400, 50));
-        jPanel5.setLayout(new java.awt.BorderLayout());
-
-        jPanel10.setPreferredSize(new java.awt.Dimension(500, 10));
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jPanel5.add(jPanel10, java.awt.BorderLayout.NORTH);
-
-        jButton2.setText("Individual Detecting");
-        jButton2.setPreferredSize(new java.awt.Dimension(127, 40));
-        jPanel5.add(jButton2, java.awt.BorderLayout.SOUTH);
-
-        jPanel2.add(jPanel5, java.awt.BorderLayout.PAGE_END);
-
-        jPanel6.setPreferredSize(new java.awt.Dimension(30, 30));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel6, java.awt.BorderLayout.LINE_START);
-
-        jPanel7.setPreferredSize(new java.awt.Dimension(30, 30));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel7, java.awt.BorderLayout.LINE_END);
+        jScrollPane3.setMaximumSize(new java.awt.Dimension(475, 300));
+        jScrollPane3.setMinimumSize(new java.awt.Dimension(475, 300));
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(475, 300));
 
         tblList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -197,16 +102,47 @@ public class BulkMenu extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tblList.setMaximumSize(new java.awt.Dimension(475, 300));
+        tblList.setMinimumSize(new java.awt.Dimension(475, 300));
+        tblList.setPreferredSize(new java.awt.Dimension(475, 300));
         jScrollPane3.setViewportView(tblList);
+        if (tblList.getColumnModel().getColumnCount() > 0) {
+            tblList.getColumnModel().getColumn(0).setMinWidth(25);
+            tblList.getColumnModel().getColumn(0).setPreferredWidth(25);
+            tblList.getColumnModel().getColumn(0).setMaxWidth(25);
+            tblList.getColumnModel().getColumn(2).setMinWidth(50);
+            tblList.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tblList.getColumnModel().getColumn(2).setMaxWidth(50);
+            tblList.getColumnModel().getColumn(3).setMinWidth(125);
+            tblList.getColumnModel().getColumn(3).setPreferredWidth(125);
+            tblList.getColumnModel().getColumn(3).setMaxWidth(125);
+        }
 
-        jPanel2.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+        jPanel2.add(jScrollPane3, new java.awt.GridBagConstraints());
+
+        txtStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtStatus.setText("Status: Ready to Check");
+        txtStatus.setMaximumSize(new java.awt.Dimension(500, 15));
+        txtStatus.setMinimumSize(new java.awt.Dimension(500, 15));
+        txtStatus.setPreferredSize(new java.awt.Dimension(500, 15));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        jPanel2.add(txtStatus, gridBagConstraints);
+
+        jButton2.setText("Individual Detecting");
+        jButton2.setMaximumSize(new java.awt.Dimension(500, 35));
+        jButton2.setMinimumSize(new java.awt.Dimension(500, 35));
+        jButton2.setPreferredSize(new java.awt.Dimension(500, 35));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        jPanel2.add(jButton2, gridBagConstraints);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
@@ -255,19 +191,12 @@ public class BulkMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTable tblList;
+    private javax.swing.JLabel txtStatus;
     // End of variables declaration//GEN-END:variables
 
     public JTextArea getField(){
@@ -289,4 +218,9 @@ public class BulkMenu extends javax.swing.JFrame {
     public void setTblList(JTable tblList) {
         this.tblList = tblList;
     }
+
+    public JLabel getTxtStatus() {
+        return txtStatus;
+    }
+    
 }

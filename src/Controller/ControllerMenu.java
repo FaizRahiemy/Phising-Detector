@@ -46,6 +46,9 @@ public class ControllerMenu extends MouseAdapter implements ActionListener, KeyL
     }
     
     public void detect(){
+        menu.getButton().setEnabled(false);
+        menu.getBulk().setEnabled(false);
+        
         String domain = menu.getTextField().getText();
         URL url = new URL(domain);
         
@@ -106,6 +109,8 @@ public class ControllerMenu extends MouseAdapter implements ActionListener, KeyL
                     isi = "Website not found";
                 }
                 menu.getTextArea().setText(isi);
+                menu.getButton().setEnabled(true);
+                menu.getBulk().setEnabled(true);
             }
 
             @Override

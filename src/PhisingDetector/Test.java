@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args) {
-        String domain = "http://facebook.com";
+        String domain = "http://safety-busines-pages.com/";
         String chkDomain = "";
         if (domain.contains("https")){
             chkDomain = domain.replace("https://", "");
@@ -32,7 +32,8 @@ public class Test {
             userAgent.visit(domain);
 
             Element div = userAgent.doc;
-            List<String> lis = div.findAttributeValues("<img src='.*'>");
+//            List<String> lis = div.findAttributeValues("<img src='.*'>");
+            List<String> lis = div.findAttributeValues("<a href>");
             for (int i = 0; i < lis.size(); i++) {
                 System.out.print(lis.get(i));
                 if (lis.get(i).contains(chkDomain)){
@@ -41,7 +42,10 @@ public class Test {
                 }
                 System.out.println("");
             }
-            float points = (((float)lis.size()-point)/lis.size())*100;
+            float points = 0;
+            if (lis.size() != 0){
+                points = (((float)lis.size()-point)/lis.size())*100;
+            }
             System.out.println("((" + lis.size() + "-" + point + ")/" + lis.size() + ")*100");
             System.out.println("size: " + lis.size());
             System.out.println("chkdomain: " + chkDomain);
