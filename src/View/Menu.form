@@ -85,13 +85,13 @@
               <Insets value="[5, 5, 5, 5]"/>
             </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[400, 25]"/>
+              <Dimension value="[400, 35]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[400, 25]"/>
+              <Dimension value="[400, 35]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[400, 25]"/>
+              <Dimension value="[400, 35]"/>
             </Property>
           </Properties>
           <Constraints>
@@ -104,13 +104,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Check"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[75, 25]"/>
+              <Dimension value="[75, 35]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[75, 25]"/>
+              <Dimension value="[75, 35]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[75, 25]"/>
+              <Dimension value="[75, 35]"/>
             </Property>
           </Properties>
           <Constraints>

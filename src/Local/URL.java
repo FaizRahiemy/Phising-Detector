@@ -35,9 +35,9 @@ public class URL {
         if (url.length() < 54){
             point = 0;
         }else if (url.length() >= 54 && url.length() < 75){
-            point = 0.05;
+            point = 0.025;
         }else{
-            point = 0.1;
+            point = 0.05;
         }
         return point;
     }
@@ -74,18 +74,6 @@ public class URL {
         return point;
     }
     
-    public double getPointIP(){
-        double point = 0;
-        int i = 0;
-        while(i < url.length()){
-            if (!isCharInt(url.charAt(i))){
-                point = 0;
-                break;
-            }
-        }
-        return point;
-    }
-    
     public double validIP () {
         try {
             if ( url == null || url.isEmpty() ) {
@@ -107,7 +95,7 @@ public class URL {
                 return 0;
             }
 
-            return 0.05;
+            return 0.025;
         } catch (NumberFormatException nfe) {
             return 0;
         }
@@ -353,9 +341,9 @@ public class URL {
         if (percent < 22){
             point = 0;
         }else if (percent >= 22 && percent < 61){
-            point = 0.05;
+            point = 0.0125;
         }else{
-            point = 0.1;
+            point = 0.025;
         }
         
         return point;

@@ -62,15 +62,15 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jTextField2.setMargin(new java.awt.Insets(5, 5, 5, 5));
-        jTextField2.setMaximumSize(new java.awt.Dimension(400, 25));
-        jTextField2.setMinimumSize(new java.awt.Dimension(400, 25));
-        jTextField2.setPreferredSize(new java.awt.Dimension(400, 25));
+        jTextField2.setMaximumSize(new java.awt.Dimension(400, 35));
+        jTextField2.setMinimumSize(new java.awt.Dimension(400, 35));
+        jTextField2.setPreferredSize(new java.awt.Dimension(400, 35));
         jPanel1.add(jTextField2, new java.awt.GridBagConstraints());
 
         jButton1.setText("Check");
-        jButton1.setMaximumSize(new java.awt.Dimension(75, 25));
-        jButton1.setMinimumSize(new java.awt.Dimension(75, 25));
-        jButton1.setPreferredSize(new java.awt.Dimension(75, 25));
+        jButton1.setMaximumSize(new java.awt.Dimension(75, 35));
+        jButton1.setMinimumSize(new java.awt.Dimension(75, 35));
+        jButton1.setPreferredSize(new java.awt.Dimension(75, 35));
         jPanel1.add(jButton1, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);

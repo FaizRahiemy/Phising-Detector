@@ -38,6 +38,8 @@ public class WhoisRecord
             return 0.1;
         }else{
             if (Integer.parseInt(estimatedDomainAge) < 180){
+                return 0.2;
+            }else if (Integer.parseInt(estimatedDomainAge) < 360){
                 return 0.1;
             }else{
                 return 0;
