@@ -48,6 +48,7 @@ public class ControllerMenu extends MouseAdapter implements ActionListener, KeyL
     public void detect(){
         menu.getButton().setEnabled(false);
         menu.getBulk().setEnabled(false);
+        menu.getTextField().setEnabled(false);
         
         String domain = menu.getTextField().getText();
         URL url = new URL(domain);
@@ -114,6 +115,7 @@ public class ControllerMenu extends MouseAdapter implements ActionListener, KeyL
                 menu.getTextArea().setText(isi);
                 menu.getButton().setEnabled(true);
                 menu.getBulk().setEnabled(true);
+                menu.getTextField().setEnabled(true);
             }
 
             @Override
@@ -147,8 +149,10 @@ public class ControllerMenu extends MouseAdapter implements ActionListener, KeyL
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER){
-            menu.getTextArea().setText("Loading Data");
-            detect();
+            if (menu.getTextArea().isEnabled()){
+                menu.getTextArea().setText("Loading Data");
+                detect();
+            }
         }
     }
 
