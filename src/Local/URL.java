@@ -75,12 +75,21 @@ public class URL {
     }
     
     public double validIP () {
+        
+        String chkDomain = url;
+        if (chkDomain.contains("https")){
+            chkDomain = chkDomain.replace("https://", "");
+        }else if (chkDomain.contains("http")){
+            chkDomain = chkDomain.replace("http://", "");
+        }
+        
+        chkDomain = chkDomain.split("/")[0];
         try {
-            if ( url == null || url.isEmpty() ) {
+            if ( chkDomain == null || chkDomain.isEmpty() ) {
                 return 0;
             }
 
-            String[] parts = url.split( "\\." );
+            String[] parts = chkDomain.split( "\\." );
             if ( parts.length != 4 ) {
                 return 0;
             }
@@ -91,7 +100,7 @@ public class URL {
                     return 0;
                 }
             }
-            if ( url.endsWith(".") ) {
+            if ( chkDomain.endsWith(".") ) {
                 return 0;
             }
 
