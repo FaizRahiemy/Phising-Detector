@@ -11,7 +11,7 @@ package API;
  */
 public class Config {
     
-    public final String apiKey = "at_JlXFytjDczoDU7qBoYMNOt7RRBMYt";
+    public final String apiKey = "at_QMr1ddYzrk8JEGmHIpqDLI1Lnmm4f";
     public final String outputFormat = "JSON";
 
     public String getApiKey() {

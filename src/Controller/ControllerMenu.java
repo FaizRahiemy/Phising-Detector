@@ -110,7 +110,7 @@ public class ControllerMenu extends MouseAdapter implements ActionListener, KeyL
                     isi = isi + " \nStatus : " + fuzzy.doFuzzy(point) + " \n";
                     
                 }catch(NullPointerException e){
-                    isi = "Website not found";
+                    isi = "Website not found OR API is expired";
                 }
                 menu.getTextArea().setText(isi);
                 menu.getButton().setEnabled(true);
