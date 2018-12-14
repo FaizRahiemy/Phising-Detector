@@ -215,6 +215,8 @@ public class URL {
             }
         } catch (NotFound ex) {
             issuer = "No Certificate\n";
+        } catch(Exception e){                   
+            issuer = "No Certificate\n";
         }
         
         return issuer;
